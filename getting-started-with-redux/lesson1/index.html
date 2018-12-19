@@ -1,0 +1,41 @@
+
+<!DOCTYPE html>
+    <html>
+    <head>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/redux/4.0.1/redux.min.js"></script>
+    </head>
+    <body>
+        <script type="text/javascript">
+            const counter = (state = 0, action) =>{
+                if (state === undefined) {
+                    return 0;
+                }
+
+                switch (action.type){
+                    case "INCREMENT":
+                        return state + 1;
+                    break;
+                    case "INCREMENT":
+                        return state - 1;
+                    break;
+                    default:
+                        return state;
+                    break;
+                }
+            }
+
+            const { createStore } = Redux;
+            const store = createStore(counter);
+            const render = () => {
+                document.body.innerText = store.getState();
+            }
+
+            store.subscribe(render);
+            render();
+
+            document.addEventListener('click', () => {
+                store.dispatch({ type: 'INCREMENT'});
+            });
+    </script>
+    </body>
+</html>
