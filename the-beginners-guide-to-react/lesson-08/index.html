@@ -1,0 +1,36 @@
+<script src="https://unpkg.com/react@16.0.0-rc.3/umd/react.development.js"></script>
+<script src="https://unpkg.com/react-dom@16.0.0-rc.3/umd/react-dom.development.js"></script>
+<script src="https://unpkg.com/prop-types@15.6/prop-types.js"></script>
+<script src="https://unpkg.com/babel-standalone@6.26.0/babel.js"></script>
+<div id="root"></div>
+
+<script type="text/babel">
+    class Message extends React.Component {
+        static propTypes = {
+            className: PropTypes.string.isRequired,
+            children: PropTypes.element.isRequired
+        }
+
+        render(){
+            const {className, style, size, children} = this.props;
+            const fullClassName = `box ${className !== undefined ? className: ''} ${size !== undefined ? `box-${size}`: ''}`.trim();
+            return (
+                <div className={fullClassName} style={{ cursor: 'ponter', ...style}} >{children}</div>
+            );            
+        } 
+    }
+    
+    const element = (
+        <div>
+            <Message>
+                <Message size="small" className="container" style={{marginLeft: 10}}>Hello World!</Message>
+            </Message>
+        </div>
+    );
+
+    console.log(element);
+    ReactDOM.render(
+        element, 
+        document.getElementById('root')
+    );
+</script>
