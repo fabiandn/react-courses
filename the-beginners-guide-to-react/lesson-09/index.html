@@ -1,0 +1,65 @@
+<script src="https://unpkg.com/react@16.0.0-rc.3/umd/react.development.js"></script>
+<script src="https://unpkg.com/react-dom@16.0.0-rc.3/umd/react-dom.development.js"></script>
+<script src="https://unpkg.com/prop-types@15.6/prop-types.js"></script>
+<script src="https://unpkg.com/babel-standalone@6.26.0/babel.js"></script>
+<div id="root"></div>
+
+<script type="text/babel">
+    const state = {days: 1, message: ''} 
+    const updateMessage = (event) => {
+        console.log(event.target.value);
+        
+        setState({message: event.target.value});
+    }
+
+    const updateDays = (event) => {
+        setState({days: state.days +1});
+    }
+
+    const Message= (props) => {
+        const {className, style, size, children} = props;
+        const fullClassName = `box ${className !== undefined ? className: ''} ${size !== undefined ? `box-${size}`: ''}`.trim();
+        return (
+            <div>
+                <div>{children}</div>
+                <div className={fullClassName} style={{ cursor: 'ponter', ...style}} >Merry Christmas... <br/>{state.message}. <br />{state.days} days to Christmas</div>
+                <input onChange={updateMessage}/>
+                <button onClick={updateDays}>Click me!</button>
+            </div>
+        );
+    }
+
+    class Alert extends React.Component {
+        constructor(props){
+            super(props);
+            this.state = {};
+            alert();
+        }
+        render() {
+            return (<div>hohoho</div>);
+        }
+    }
+    
+    const App = () => {
+        return (
+            <div>
+                <Message size="small" className="container" style={{marginLeft: 10}}>Hi!</Message>
+                <Alert></Alert>
+            </div>
+        )
+    };
+
+    const setState = (newState) => {
+        Object.assign(state, newState);
+        renderApp();
+    }
+
+    const renderApp = () => {
+        ReactDOM.render(
+            <App/>, 
+            document.getElementById('root')
+        );
+    }
+    
+    setState({days: 10, message: 'And Happy New Year'});
+</script>
