@@ -5,26 +5,18 @@
 <div id="root"></div>
 
 <script type="text/babel">
-    class Counter extends React.Component {
-        state = {count: 0};
-        handleClick = () => {
-            this.setState(({count}) => ({
-                count: count + 1
-            }))
+    class Sample extends React.Component {
+        componentDidMount(){
+            console.log(this.rootNode);            
         }
-
-        render() {
-        
+        render(){
             return (
-                <div style={{textAlign: 'center'}}>
-                    <button onClick={this.handleClick}>{this.state.count}</button>
-                </div>
+                <div ref={node => this.rootNode = node} {...this.props}>Sample....</div>
             );
         }
     }
-
     ReactDOM.render(
-        <Counter/>,
+        <Sample className="container"/>,
         document.getElementById('root')
     );
 </script>

@@ -1,0 +1,33 @@
+<script src="https://unpkg.com/react@16.0.0-rc.3/umd/react.development.js"></script>
+<script src="https://unpkg.com/react-dom@16.0.0-rc.3/umd/react-dom.development.js"></script>
+<script src="https://unpkg.com/prop-types@15.6/prop-types.js"></script>
+<script src="https://unpkg.com/babel-standalone@6.26.0/babel.js"></script>
+<div id="root"></div>
+
+<script type="text/babel">
+    class NameFor extends React.Component {
+        handelSubmit = (event) => {
+            event.preventDefault();
+            console.log(event.target.elements[0].value);
+            console.log(event.target.elements.field1.value);
+            console.log(this.inputNode.value);
+            
+        }
+        render(){
+            return (
+                <form onSubmit={this.handelSubmit}>
+                    <div>
+                        <label>Name
+                        <input type="text" name="field1" ref={node=> this.inputNode = node}/>
+                        </label>
+                        <button>Submit</button>
+                    </div>
+                </form>
+            );
+        }
+    }
+    ReactDOM.render(
+        <NameFor className="container"/>,
+        document.getElementById('root')
+    );
+</script>
