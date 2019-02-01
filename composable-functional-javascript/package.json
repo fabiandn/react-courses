@@ -1,0 +1,17 @@
+{
+  "name": "examples-functional-js",
+  "version": "1.0.0",
+  "description": "",
+  "main": "3-box.js",
+  "dependencies": {
+    "immutable": "^4.0.0-rc.12",
+    "immutable-ext": "^1.1.5"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node 9-semigroup-examples.js"
+  },
+  "author": "Fabian Diaz",
+  "license": "ISC"
+}
