@@ -12,8 +12,6 @@ Sum.empty = () => Sum(0);
 
 const resSum = Sum.empty().concat(Sum(1).concat(Sum(2)))
 
-console.log(resSum.toString())
-
 const All = x => ({
     x,
     concat: ({x: y}) =>
@@ -25,7 +23,6 @@ const All = x => ({
 All.empty = () => All(true);
 
 const resAll = All.empty().concat(All(true).concat(All(true)))
-console.log(resAll.toString())
 
 const First = x => ({
     x,
@@ -43,4 +40,5 @@ const all = xs =>
 
 const first = xs =>
     xs.reduce((acc, x) => acc)
-console.log(first([1,2,3,4]));
+
+module.exports = Sum;
