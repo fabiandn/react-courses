@@ -15,3 +15,4 @@ const nextCharForNumberString = str =>
 const result = nextCharForNumberString('  64  ');
 
 console.log(String(result));
+module.exports = Box;
